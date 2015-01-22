@@ -124,52 +124,13 @@ public class But implements astar.But, astar.Heuristique {
         for(int i =0 ; i< best_matrix_combinaison.length; i++){
             min_distance += temp[best_matrix_combinaison[i][0]][best_matrix_combinaison[i][1]];
 
-
-            Case block = etat.blocks.get(i);
-                grid[block.x][block.y].symbole = ' ';
-                distance_player = distance_player_block(etat.bonhomme,block);
-                if(distance_player < best_distance_player){
-                    best_distance_player = distance_player;
-                }
-
-                cleanGrid();
-                grid[block.x][block.y].symbole = '$';
-
-
-
         }
         setGridWithSymbole(grid,etat.blocks,' ');
 
-        double h =  min_distance + best_distance_player;
+        double h =  min_distance + distance_player_box;
 
         return h;
-/*
-       *//* int block_to_choose = Integer.MAX_VALUE;
-        int distance_choosens_block =0;
-        for(int i=0; i< matrix_distance.length ; i++){
-            for(Integer min : list_distances ){
-                if(block_to_choose > matrix_distance[i][min]){
-                    if(!les_buts.contains(etat.blocks.get(i))){
-                        block_to_choose = matrix_distance[i][min];
-                        distance_choosens_block = distance(etat.bonhomme,etat.blocks.get(i));
-                    }
 
-                }
-            }
-        }
-*//*
-
-
-        int distance_player_box = Integer.MAX_VALUE;
-        for(Case c : etat.blocks){
-            int dis = distance(etat.bonhomme, c);
-            if( distance_player_box > dis ){
-                distance_player_box = dis;
-
-            }
-        }
-
-        return Math.pow(Double.valueOf(min_distance + (distance_player_box/1.5)),2)/7 ;//+ distance_player_box * 10; *//*//**//* block_to_choose;*/
     }
 
 

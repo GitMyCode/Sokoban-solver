@@ -17,7 +17,8 @@ import sokoban.Probleme;
 public class Solver {
     
     public static void main(String args[]) throws IOException {
-        Reader reader = args.length==1 ? new FileReader(args[0]) : new InputStreamReader(System.in);
+        //Reader reader = args.length==1 ? new FileReader(args[0]) : new InputStreamReader(System.in);
+        Reader reader =  new FileReader("tests/sokoban14.txt");
         BufferedReader br = new BufferedReader(reader);
         Probleme probleme = Probleme.charger(br);
         List<astar.Action> plan = astar.AStar.genererPlan(probleme.grille, probleme.etatInitial, probleme.but, probleme.but);
@@ -25,7 +26,7 @@ public class Solver {
             System.out.println("<Aucune solution>");
         else
             for(astar.Action action : plan){
-                System.out.println("" + action);
+                System.out.print("" + action);
             }
     }
 }
